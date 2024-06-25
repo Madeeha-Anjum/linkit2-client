@@ -1,0 +1,19 @@
+version: "0.2"
+ignorePaths:
+  - pnpm-lock.yaml
+dictionaryDefinitions: []
+dictionaries:
+  - en_US
+  - companies
+  - softwareTerms
+  - misc
+  - node
+  - typescript
+  - html
+  - css
+words:
+  - tailwindcss
+ignoreWords: []
+import: []
+language: en
+enabled: true
