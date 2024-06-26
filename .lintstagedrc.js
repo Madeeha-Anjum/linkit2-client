@@ -11,5 +11,8 @@ module.exports = {
     'prettier --write --ignore-unknown',
     'cspell --file',
   ],
-  '!*.{js,jsx,ts,tsx}': ['prettier --write --ignore-unknown', 'cspell --file'],
+  '!*.{js,jsx,ts,tsx}': [
+    'prettier --write --ignore-unknown',
+    'cspell --no-must-find-files --file',
+  ],
 };
