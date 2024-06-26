@@ -1,6 +1,7 @@
 version: '0.2'
 ignorePaths:
   - pnpm-lock.yaml
+  - .devcontainer/devcontainer.json
 dictionaryDefinitions: []
 dictionaries:
   - en_US
@@ -13,6 +14,8 @@ dictionaries:
   - css
 words:
   - tailwindcss
+  - devcontainer
+  - linkit
 ignoreWords: []
 import: []
 language: en

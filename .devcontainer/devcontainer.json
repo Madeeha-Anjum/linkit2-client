@@ -22,13 +22,17 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "bradlc.vscode-tailwindcss", // TailwindCSS IntelliSense
+        "DavidAnson.vscode-markdownlint", // Markdown linting
+        "dbaeumer.vscode-eslint", // ESLint
         "EditorConfig.EditorConfig", // EditorConfig
         "esbenp.prettier-vscode", // Prettier
+        "heybourn.headwind", // TailwindCSS class sorter
+        "mikestead.dotenv", // .env support
         "streetsidesoftware.code-spell-checker", // Spell checker
         "usernamehw.errorlens", // Error lens
         "vivaxy.vscode-conventional-commits", // Conventional commits
-        "yzhang.markdown-all-in-one", // Markdown support
-        "DavidAnson.vscode-markdownlint" // Markdown linting
+        "yzhang.markdown-all-in-one" // Markdown support
       ]
     }
   }
