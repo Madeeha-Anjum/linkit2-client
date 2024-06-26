@@ -1,0 +1,22 @@
+version: '0.2'
+ignorePaths:
+  - pnpm-lock.yaml
+  - .devcontainer/devcontainer.json
+dictionaryDefinitions: []
+dictionaries:
+  - en_US
+  - companies
+  - softwareTerms
+  - misc
+  - node
+  - typescript
+  - html
+  - css
+words:
+  - tailwindcss
+  - devcontainer
+  - linkit
+ignoreWords: []
+import: []
+language: en
+enabled: true
