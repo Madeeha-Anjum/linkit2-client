@@ -13,9 +13,10 @@ dictionaries:
   - html
   - css
 words:
-  - tailwindcss
+  - clsx
   - devcontainer
   - linkit
+  - tailwindcss
 ignoreWords: []
 import: []
 language: en
