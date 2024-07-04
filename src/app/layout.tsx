@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
-import { ModeToggle } from '@/components/ModeToggle';
+import Header from '@/components/Header';
+import ModeToggle from '@/components/ModeToggle';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 
@@ -25,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased px-3 py-3',
           fontSans.variable,
         )}
       >
@@ -35,7 +36,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
+          <Header />
           {children}
         </ThemeProvider>
       </body>
