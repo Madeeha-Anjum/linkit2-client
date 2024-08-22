@@ -2,11 +2,10 @@ import * as React from 'react';
 
 export default function Banner() {
   return (
-    <section className="prose text-center mx-auto">
-      <h1>
-        Raise the <span>Power</span> of your Links
+    <section className="mx-auto prose text-center">
+      <h1 className="text-balance">
+        Raise the <span>Power</span> of Your Links
       </h1>
-      <p className="lead">Double the Impact, Half the Length</p>
     </section>
   );
 }
