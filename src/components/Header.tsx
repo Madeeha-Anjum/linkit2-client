@@ -6,14 +6,11 @@ import { Button } from './ui/button';
 export default function Header() {
   return (
     <>
-      <nav className="flex justify-between">
+      <nav className="flex items-center justify-between px-6">
         <ul>
-          <li>Linkit2</li>
+          <Button variant="link">Linkit2</Button>
         </ul>
-        <ul className="flex space-x-3 items-center">
-          <li>
-            <Button variant="link">Link History</Button>
-          </li>
+        <ul className="flex items-center space-x-3 *:py-3">
           <li>
             <ModeToggle />
           </li>

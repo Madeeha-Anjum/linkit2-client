@@ -18,6 +18,8 @@ words:
   - hookform
   - linkit
   - tailwindcss
+  - tanstack
+  - usehooks
 ignoreWords: []
 import: []
 language: en

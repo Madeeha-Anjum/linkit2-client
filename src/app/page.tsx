@@ -1,7 +1,12 @@
+import dynamic from 'next/dynamic';
+
 import Banner from '@/components/Banner';
-import LinkHistory from '@/components/LinkHistory';
 import PageSection from '@/components/PageSection';
 import ShortenLinkForm from '@/components/ShortenLinkForm';
+
+const ShortenedLink = dynamic(() => import('@/components/ShortenedLink'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -13,12 +18,10 @@ export default function Home() {
         <PageSection>
           <ShortenLinkForm />
         </PageSection>
-        <div className="h-20"></div>
-      </div>
-      <div className="min-h-screen bg-white">
-        <PageSection className="py-20">
-          <LinkHistory />
+        <PageSection>
+          <ShortenedLink />
         </PageSection>
+        <div className="h-20"></div>
       </div>
     </main>
   );

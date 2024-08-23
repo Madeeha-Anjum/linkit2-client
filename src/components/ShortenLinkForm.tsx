@@ -1,6 +1,12 @@
 'use client';
 
+import assert from 'assert';
+
+import { faker } from '@faker-js/faker';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { useSearchParams } from 'next/navigation';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -15,31 +21,48 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
+import { linkRecordSchema } from '@/models/LinkRecord';
+import LinksContext from '@/stores/links-context';
 
 const FormSchema = z.object({
-  longUrl: z.string().min(2, {
-    message: 'Url must be at least 2 characters.',
-  }),
+  originalUrl: z
+    .string()
+    .min(1, {
+      message: 'URL is empty',
+    })
+    .url({
+      message: 'Invalid URL',
+    }),
 });
 
 export default function ShortenLinkForm() {
+  const searchParams = useSearchParams();
+  const linksContext = useContext(LinksContext);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      longUrl: '',
+      originalUrl: '',
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+  useEffect(() => {
+    if (searchParams.get('prefill') === 'true') {
+      const fakeLongUrl = faker.internet.url();
+      console.log(fakeLongUrl);
+      form.setValue('originalUrl', fakeLongUrl);
+    }
+  }, [searchParams, form, form.setValue]);
+
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    const response = await axios
+      .post('http://localhost:8000/links/', {
+        original_url: data.originalUrl,
+      })
+      .then((res) => linkRecordSchema.parse(res.data));
+
+    assert(linksContext !== null, 'linksContext should not be null');
+    linksContext.setLinkRecord(response);
   }
 
   return (
@@ -47,10 +70,10 @@ export default function ShortenLinkForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="longUrl"
+          name="originalUrl"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Long Link</FormLabel>
+              <FormLabel>Original URL</FormLabel>
               <FormControl>
                 <Input placeholder="Paste Your Link Here" {...field} />
               </FormControl>
