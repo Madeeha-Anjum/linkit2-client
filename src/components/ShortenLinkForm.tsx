@@ -21,8 +21,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { linkRecordSchema } from '@/models/LinkRecord';
-import LinksContext from '@/stores/links-context';
+import { Api } from '@/linkitServerApi';
+import LinkItContext from '@/stores/linkit-context';
 
 const FormSchema = z.object({
   originalUrl: z
@@ -37,7 +37,7 @@ const FormSchema = z.object({
 
 export default function ShortenLinkForm() {
   const searchParams = useSearchParams();
-  const linksContext = useContext(LinksContext);
+  const linkItContext = useContext(LinkItContext);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -55,14 +55,10 @@ export default function ShortenLinkForm() {
   }, [searchParams, form, form.setValue]);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const response = await axios
-      .post('http://localhost:8000/links/', {
-        original_url: data.originalUrl,
-      })
-      .then((res) => linkRecordSchema.parse(res.data));
+    const linkRecord = await Api.shortenLink(data.originalUrl);
 
-    assert(linksContext !== null, 'linksContext should not be null');
-    linksContext.setLinkRecord(response);
+    assert(linkItContext !== null, 'linksContext should not be null');
+    linkItContext.addLinkRecordId(linkRecord.id);
   }
 
   return (

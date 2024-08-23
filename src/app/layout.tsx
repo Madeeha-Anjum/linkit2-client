@@ -6,8 +6,9 @@ import Header from '@/components/Header';
 import ModeToggle from '@/components/ModeToggle';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import { QueryProvider } from '@/providers/QueryProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
-import { LinksContextProvider } from '@/stores/links-context';
+import { LinkItContextProvider } from '@/stores/linkit-context';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -38,11 +39,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LinksContextProvider>
-            <Header />
-            {children}
-            <Toaster />
-          </LinksContextProvider>
+          <QueryProvider>
+            <LinkItContextProvider>
+              <Header />
+              {children}
+              <Toaster />
+            </LinkItContextProvider>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>

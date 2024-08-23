@@ -4,25 +4,24 @@ import Banner from '@/components/Banner';
 import PageSection from '@/components/PageSection';
 import ShortenLinkForm from '@/components/ShortenLinkForm';
 
-const ShortenedLink = dynamic(() => import('@/components/ShortenedLink'), {
+const ShortenedLinks = dynamic(() => import('@/components/ShortenedLinks'), {
   ssr: false,
 });
 
 export default function Home() {
   return (
     <main className="">
-      <div className="flex flex-col justify-center min-h-screen space-y-12">
+      <section className="mt-40 space-y-12">
         <PageSection>
           <Banner />
         </PageSection>
         <PageSection>
           <ShortenLinkForm />
         </PageSection>
-        <PageSection>
-          <ShortenedLink />
-        </PageSection>
-        <div className="h-20"></div>
-      </div>
+      </section>
+      <PageSection className="mt-20">
+        <ShortenedLinks />
+      </PageSection>
     </main>
   );
 }
