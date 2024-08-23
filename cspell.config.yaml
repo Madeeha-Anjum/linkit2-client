@@ -13,9 +13,14 @@ dictionaries:
   - html
   - css
 words:
-  - tailwindcss
+  - clsx
   - devcontainer
+  - hookform
   - linkit
+  - Pranav
+  - tailwindcss
+  - tanstack
+  - usehooks
 ignoreWords: []
 import: []
 language: en
