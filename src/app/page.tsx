@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
 import Banner from '@/components/Banner';
 import PageSection from '@/components/PageSection';
@@ -16,7 +17,9 @@ export default function Home() {
           <Banner />
         </PageSection>
         <PageSection>
-          <ShortenLinkForm />
+          <Suspense>
+            <ShortenLinkForm />
+          </Suspense>
         </PageSection>
       </section>
       <PageSection className="mt-20">
