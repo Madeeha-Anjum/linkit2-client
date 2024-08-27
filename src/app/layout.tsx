@@ -1,9 +1,9 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
 import Header from '@/components/Header';
-import ModeToggle from '@/components/ModeToggle';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { QueryProvider } from '@/providers/QueryProvider';
@@ -47,6 +47,7 @@ export default function RootLayout({
             </LinkItContextProvider>
           </QueryProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
