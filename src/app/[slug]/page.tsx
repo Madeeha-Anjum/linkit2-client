@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: Params }) {
   }
 
   return (
-    <main className="mx-auto mt-20 prose text-center">
+    <main className="mx-auto mt-20 prose dark:prose-invert text-center">
       <h1>Link Not Found</h1>
       <p className="lead">
         The link for <strong>&quot;{params.slug}&quot;</strong> has expired or
