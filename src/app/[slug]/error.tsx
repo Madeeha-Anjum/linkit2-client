@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="mx-auto mt-20 prose text-center">
+    <main className="mx-auto mt-20 prose dark:prose-invert text-center">
       <h1 className="text-center">Something went wrong!</h1>
       <p className="lead">
         Please contact Pranav at{' '}
